@@ -1,0 +1,86 @@
+\documentclass[a4paper, title page, 12pt]{report}
+
+\usepackage[utf8]{inputenc} % permet d'écrire des caractères accentués et autres trucs direct
+\usepackage[T1]{fontenc} % norme T1 LaTeX
+\usepackage[french]{babel} % renommage français
+\usepackage{graphicx} % permet l'insertion d'image
+\usepackage{geometry} % permet le redimensionnement plus pratique de la page ou la mise en "landscape" (paysage) d'une feuille
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage[final]{pdfpages} 
+
+% package et définitions des en-têtes et pieds-de-page
+	\usepackage{lastpage}
+	\usepackage{fancyhdr}
+	\pagestyle{fancy}
+	\renewcommand{\headrulewidth}{1pt}
+	\fancyhead[L]{\leftmark}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+	\renewcommand{\footrulewidth}{1pt}
+	\fancyfoot[C]{ÉCOLE NATIONALE SUPÉRIEURE D'INFORMATIQUE POUR L'INDUSTRIE ET L'ENTREPRISE \\ 1,  square de la résistance 91025 ÉVRY - http://www.ensiie.fr/ \\ 		\textbf{Page \thepage/\pageref{LastPage}}}
+
+
+\makeatletter
+\let\ps@plain=\ps@fancy
+\makeatother
+% des trucs pas très utiles pour ce document mais quand même !
+	\title{IIAR - Spécifications du jeu de dames}
+	\author{Romain EPIARD - Fabien GOUGET}
+	\date{}
+	
+	\begin {document}
+	% première page
+		\input{premierePage.tex}
+		
+	\setcounter{page}{1}
+	\newpage
+
+% table des matières
+	\tableofcontents
+	\newpage	
+	\chapter{Spécifications fonctionnelles}
+	\section{Règles du jeu de dames}
+	Les règles suivantes seront celles que nous implémenterons dans notre projet. Le jeu de dames se joue sur un plateau de 100 cases. Chaque joueur possède 20 pions. Il y a deux joueurs. Un des joueurs utilise les pions blancs, l'autre les pions noirs. Les pions ne peuvent se déplacer qu'en diagonale. Pour prendre un pion du joueur adversaire, il faut qu'il y ait une case vide de l'autre côté du pion à prendre. Si un joueur atteint la zone de départ du joueur opposé avec un de ses pions, alors ce pion devient un pion reine.\\
+
+Un joueur gagne la partie lorsque :
+\begin{itemize}
+	\item L'autre joueur abandonne,
+	\item Se trouve dans l'impossibilité de jouer,
+	\item N'a plus de pions.\\
+\end{itemize}
+
+Le codage des règles du jeu sera la première chose à faire. L'interface se présentera immédiatement sur le jeu. Quand on lancera le jeu, on se trouvera sur un damier, avec des pions déjà disposés. Si on souhaite changer de mode de jeu, on disposera d'un menu horizontal en haut de la fenêtre. Dans les modes de jeux seront proposés : 
+
+\begin{itemize}
+	\item Joueur contre machine,
+	\item Machine contre machine.
+\end{itemize}
+
+	\newpage
+		
+	\section{Algorithme du Min-Max}
+	Une fois le jeu de dames implémenté, nous implémenterons l'algorithme du min-max. Pour qu'un joueur humain puisse jouer contre la machine. Ou qu'on puisse lancer une partie machine contre machine.\\
+	
+	\section{Algorithme Alpha-Béta}
+	Quand l'algorithme Min-Max sera implémenté et fonctionnera, nous passerons à l'algorithme de l'Alpha-Beta.\\
+	
+	\section{Mémorisation et expérience}
+	Enfin, si nous arrivons à terminer nos algorithmes avant la fin du temps, nous essaierons d'implémenter un système de mémorisation, afin que la machine puisse faire des choix de déplacement de pions, en fonction des parties précédentes.
+	
+	\section{Fonction d'évaluation}
+	Pour pouvoir déterminer les nœuds les plus prometteurs, lors du parcours de l'arbre, nous allons coder une fonction d'évaluation. Celle-ci sera utilisée par les deux algorithmes utilisés, à savoir le Min-Max, et l'Alpha-Béta.\\
+	
+	Notre fonction d'évaluation sera calculée en fonction des critères suivants : 
+ 
+	\begin{itemize}
+		\item Si l'ordinateur peut prendre plusieurs pions de l'adversaire d'un seul coup, alors ce coup sera prioritaire. Il faudra alors calculer que ce coup lui permettra de prendre plus de pions qu'il ne lui en fera perdre.
+		
+		\item Se déplacer sur une case vide, dans le champ d'action du pion. Et prioriser le fait de se rendre dans la zone de l'adversaire, pour pouvoir transformer ses pions en dames. 
+		
+		\item Si on doit déplacer un pion en direction d'un pion adversaire, s'assurer dans la mesure du possible que le pion de l'adversaire ne se trouve pas en position de force. C'est-à dire éviter de donner des pions au joueur, en les faisant avancer, mais en laissant des cases vides derrière soit.\\
+\end{itemize}
+	\chapter{Spécifications techniques}
+	\section{Technologie utilisée et Réutilisation de ressources}
+Le langage utilisé pour coder ce jeu de dames sera le Java. L'interface graphique du jeu a été récupérée sur internet. Nous avions déjà codé les algorithmes du Min-Max et Alpha-Béta. Nous les récupérerons pour les utiliser dans ce projet. Il nous restera la fonction d’évaluation à faire, ainsi que le système de mémorisation des parties précédentes.
+\end{document}
