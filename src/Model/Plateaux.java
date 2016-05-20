@@ -12,7 +12,7 @@ class Plateaux
 		this.x = 10;
 		this.y = 10;
 		this.EMPTY = new Pion(-1, true);
-		this.gamePLateau = new Pion[x][y];
+		this.gamePLateau = new Pion[this.x][this.y];
 		
 		this.initPlateau();
 	}
@@ -25,16 +25,15 @@ class Plateaux
 			{
 				switch (j)
 				{
-				case 0: if(i%2 == 1){this.gamePLateau[i][j] = new Pion(0, false);}break;
-				case 1: if(i%2 == 0){this.gamePLateau[i][j] = new Pion(0, false);}break;
-				case 2: if(i%2 == 1){this.gamePLateau[i][j] = new Pion(0, false);}break;
-				case 3: if(i%2 == 0){this.gamePLateau[i][j] = new Pion(0, false);}break;
-				
-				case 9: if(i%2 == 1){this.gamePLateau[i][j] = new Pion(1, true);}break;
-				case 8: if(i%2 == 0){this.gamePLateau[i][j] = new Pion(1, true);}break;
-				case 7: if(i%2 == 1){this.gamePLateau[i][j] = new Pion(1, true);}break;
-				case 6: if(i%2 == 0){this.gamePLateau[i][j] = new Pion(1, true);}break;
-				
+					case 0: if(i%2 == 1){this.gamePLateau[i][j] = new Pion(0, false);}break;
+					case 1: if(i%2 == 0){this.gamePLateau[i][j] = new Pion(0, false);}break;
+					case 2: if(i%2 == 1){this.gamePLateau[i][j] = new Pion(0, false);}break;
+					case 3: if(i%2 == 0){this.gamePLateau[i][j] = new Pion(0, false);}break;
+					
+					case 9: if(i%2 == 1){this.gamePLateau[i][j] = new Pion(1, true);}break;
+					case 8: if(i%2 == 0){this.gamePLateau[i][j] = new Pion(1, true);}break;
+					case 7: if(i%2 == 1){this.gamePLateau[i][j] = new Pion(1, true);}break;
+					case 6: if(i%2 == 0){this.gamePLateau[i][j] = new Pion(1, true);}break;				
 				}
 				if(this.gamePLateau[i][j] == null)
 					this.gamePLateau[i][j] = this.EMPTY;

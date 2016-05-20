@@ -1,5 +1,6 @@
 package View;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -13,6 +14,8 @@ public class Plateau extends JPanel
 	private Case caseActive;
 
 	private boolean tourNoir;
+	
+	private ArrayList<Case> deplacement;
 
 	public Plateau(int taille)
 	{
@@ -25,12 +28,13 @@ public class Plateau extends JPanel
 				{
 					ajouterCase(Couleur.NOIR);
 				}
-				else{
+				else
+				{
 					ajouterCase(Couleur.BLANC);
 				}
 			}
 		}
-		//init();
+		init();
 	}
 
 	private void ajouterCase(Couleur couleur)
@@ -58,13 +62,14 @@ public class Plateau extends JPanel
 
 	public Case getCase(int i, int j)
 	{
-		return (Case) getComponent(j+i*TAILLE);
+		return (Case)getComponent(j+i*TAILLE);
 	}
 
 	public Case getCase(int i)
 	{
-		return (Case) getComponent(i);
+		return (Case)getComponent(i);
 	}
+	
 
 	public void afficherPossibilites(Pion p)
 	{
@@ -77,10 +82,9 @@ public class Plateau extends JPanel
 				getCase(k).setSelectionnee(false);
 				if(getCase(k).getComponentCount()!=0 && getCase(k).getComponent(0).equals(p))
 				{
-					caseActive=getCase(k);
+					this.caseActive=getCase(k);
 					i=k/TAILLE;
 					j=k%TAILLE;
-
 				}
 			}
 			selectionnerCases(i, j, p.getCouleur());
@@ -109,7 +113,8 @@ public class Plateau extends JPanel
 				getCase(i-2, j+2).setSelectionnee(true);
 			}
 		}
-		else{
+		else
+		{
 			if(i+1<TAILLE && j+1<TAILLE && getCase(i+1, j+1).getComponentCount()==0)
 			{
 				getCase(i+1, j+1).setSelectionnee(true);
@@ -126,7 +131,6 @@ public class Plateau extends JPanel
 			{
 				getCase(i+2, j-2).setSelectionnee(true);
 			}
-			
 		}
 	}
 
@@ -137,7 +141,7 @@ public class Plateau extends JPanel
 		{
 			getCase(k).setSelectionnee(false);
 		}
-		if(Math.abs(getLigne(case1)-getLigne(caseActive))==2)
+		if(Math.abs(getLigne(case1)-getLigne(this.caseActive))==2)
 		{
 			int i = (getLigne(case1)+getLigne(caseActive))/2;
 			int j = (getColonne(case1)+getColonne(caseActive))/2;
@@ -145,7 +149,6 @@ public class Plateau extends JPanel
 			getCase(i, j).validate();
 			getCase(i, j).repaint();
 		}
-		tourNoir=!tourNoir;
 		caseActive.removeAll();
 		caseActive.repaint();
 		caseActive=null;
@@ -160,6 +163,13 @@ public class Plateau extends JPanel
 			Pion p=(Pion)(case1.getComponent(0));
 			p.setMonte(true);
 		}
+		//if(!pionsMangeables((Pion)(case1.getComponent(0))))
+			tourNoir=!tourNoir;
+	}
+
+	public void addCase(Case c)
+	{
+		this.deplacement.add(c);
 	}
 
 	private int getLigne(Case case1)
@@ -187,5 +197,4 @@ public class Plateau extends JPanel
 		}
 		return res;
 	}
-
 }

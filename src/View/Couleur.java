@@ -1,9 +1,8 @@
 package View;
 
-public enum Couleur {
-	
+public enum Couleur
+{
 	BLANC,
 	NOIR
 	;
-
 }

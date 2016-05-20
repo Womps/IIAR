@@ -36,6 +36,7 @@ public class Case extends JPanel
 	public void setSelectionnee(boolean selectionnee) 
 	{
 		this.selectionnee = selectionnee;
+		initCouleur();
 		if(selectionnee)
 		{
 			setBackground(Color.BLUE);

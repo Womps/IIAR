@@ -6,7 +6,5 @@ public class Reine extends Pion
 	{
 		super(couleurP, deplace);
 		// TODO Auto-generated constructor stub
-	}
-	
-	
+	}	
 }

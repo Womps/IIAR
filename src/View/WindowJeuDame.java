@@ -68,7 +68,7 @@ public class WindowJeuDame extends JPanel implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent ae) 
 	{
-		switch (strategyCombo.getSelectedIndex()) 
+		/*switch (strategyCombo.getSelectedIndex()) 
 		{
 			case 0:
 				search = MinimaxSearch.createFor(game);
@@ -85,7 +85,7 @@ public class WindowJeuDame extends JPanel implements ActionListener
 						1.0, 1000);
 				((IterativeDeepeningAlphaBetaSearch<?, ?, ?>) search)
 						.setLogEnabled(true);
-		}
+		}*/
 	}
 
 	/** Uses adversarial search for selecting the next action. */
