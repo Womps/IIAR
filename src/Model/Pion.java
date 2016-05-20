@@ -25,4 +25,8 @@ public class Pion
 	{
 		this.deplaceTop = deplace;
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 96c490c7fcbba74e99762518ccc644055cc0baa0

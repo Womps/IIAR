@@ -8,8 +8,13 @@ import java.awt.Paint;
 import javax.swing.JPanel;
 
 
+<<<<<<< HEAD
 public class Pion extends JPanel
 {
+=======
+public class Pion extends JPanel {
+
+>>>>>>> 96c490c7fcbba74e99762518ccc644055cc0baa0
 	private static final long serialVersionUID = 1436178861615738480L;
 
 	private Couleur couleur;
@@ -68,4 +73,8 @@ public class Pion extends JPanel
 		this.monte = monte;
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 96c490c7fcbba74e99762518ccc644055cc0baa0
