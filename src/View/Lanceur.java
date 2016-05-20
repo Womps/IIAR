@@ -12,10 +12,10 @@ public class Lanceur {
 		}
 		catch(Exception e){}
 		JFrame f = new JFrame();
-		f.setSize(600, 600);
+		f.setSize(800, 800);
 		f.setLocationRelativeTo(null);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.add(new Plateau(9));
+		f.add(new WindowJeuDame());
 		f.setVisible(true);
 
 	}
